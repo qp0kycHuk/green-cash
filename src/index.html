@@ -1,17 +1,41 @@
-<!DOCTYPE html>
-<html lang="en">
+<%= _.template(require('./html-includes/header.html').default)() %>
 
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Worked</title>
-</head>
+  <section class="flex">
 
-<body>
-  <header class="header"> </header>
- 
-  <footer class="footer"> </footer>
-</body>
+    <%= _.template(require('./html-includes/sidebar.html').default)() %>
 
-</html>
+      <div class="content ml-6 flex-grow p-10 card">
+        <div class="flex flex-align-center progect-header">
+          <div class="flex">
+            <div class="progect-header-logo mr-8">
+              <img src="img/test-1.jpg" alt="">
+            </div>
+            <div class="">
+              <div class="text-h4">semensajen.ru</div>
+              <div class="text-body-2 fade-60">Семена и саженцы</div>
+            </div>
+          </div>
+          <div class="mx-auto progect-header-users">
+            <div class="avatar-list">
+              <%= _.template(require('./html-includes/avatar.html').default)() %>
+              <%= _.template(require('./html-includes/avatar.html').default)() %>
+              <%= _.template(require('./html-includes/avatar.html').default)() %>
+              <%= _.template(require('./html-includes/avatar.html').default)() %>
+              <%= _.template(require('./html-includes/avatar.html').default)() %>
+            </div>
+          </div>
+          <div class="ml-auto">
+            <button class="btn btn--primary btn--white-bg btn-icon btn-large">
+              <svg class="icon text-h6 color-text fade-60">
+                <use xlink:href="img/icons.svg#settings" />
+              </svg>
+            </button>
+          </div>
+        </div>
+      </div>
+  </section>
+
+
+  </body>
+
+  </html>

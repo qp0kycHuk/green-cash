@@ -2,9 +2,11 @@
 @import '../ui/scss/_functions.scss';
 
 :root {
-	@each $key, $value in $colors {
-        @include getColors($value, $key);
-    }
+
+	@each $key,
+	$value in $colors {
+		@include getColors($value, $key);
+	}
 
 	--bg1: #E9EAEC;
 	--bg2: #F4F5F6;
@@ -20,7 +22,10 @@
 	--media-md: #{$md};
 	--media-sm: #{$sm};
 
-	--font-base: 'Roboto', Arial, Helvetica, sans-serif;
+	--font-base: 'Inter',
+	Arial,
+	Helvetica,
+	sans-serif;
 
 	--zi-l1: 321;
 	--zi-l2: 322;
@@ -49,7 +54,8 @@ body {
 	flex-direction: column;
 
 	* {
-		font-family: var(--font-base);
+		font-family                : var(--font-base);
+		-webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 	}
 
 }
@@ -67,5 +73,119 @@ body {
 
 	.active-enabled {
 		display: flex !important;
+	}
+}
+
+.header {
+	display       : flex;
+	align-items   : center;
+	padding-top   : 10px;
+	padding-bottom: 10px;
+
+	position: sticky;
+	top     : 0;
+	z-index : var(--zi-l3);
+
+	&-logo {
+		width : 182px;
+		height: 40px;
+
+		@media(max-width:$md) {
+			width : 146px;
+			height: 28px;
+		}
+	}
+}
+
+.auth-page {
+	position: relative;
+	display : flex;
+
+	@media(max-width:$sm) {
+		padding: 0;
+	}
+
+	&__background {
+		position      : absolute;
+		inset         : 0;
+		pointer-events: none;
+
+		@media(max-width:$sm) {
+			display: none;
+		}
+
+		img {
+			width     : 100%;
+			height    : 100%;
+			object-fit: cover;
+		}
+	}
+
+	&__form {
+		position          : relative;
+		// background     : radial-gradient(98.48% 326.98% at 0% 3.35%, rgba(255, 255, 255, 0.8) 0%, rgba(255, 255, 255, 0.4) 100%);
+		background        : radial-gradient(98.48% 326.98% at 0% 3.35%, var(--bg3) 0%, rgba(255, 255, 255, 0.6) 100%);
+		backdrop-filter   : blur(20px);
+
+		border-radius: 24px;
+		width        : 402px;
+		width        : max(402px, 22vw);
+		max-width    : 100%;
+		margin       : auto;
+
+		@media(max-width:$sm) {
+			border-radius  : 0;
+			backdrop-filter: none;
+			background     : var(--bg2)
+		}
+	}
+}
+
+.sidebar {
+	width  : 246px;
+	padding: 24px 8px;
+
+	&-project {
+
+		&-icon {
+			opacity   : 0;
+			transition: .15s ease;
+		}
+
+		@media(hover) {
+			&:hover &-icon {
+				opacity: 1;
+			}
+		}
+	}
+}
+
+
+.progect-header {
+	&-logo {
+		width : 52px;
+		height: 52px;
+
+		img {
+			max-width : 100%;
+			max-height: 100%;
+		}
+	}
+}
+
+.avatar {
+	&-list {
+		display    : flex;
+		align-items: center;
+	}
+
+	&-item {
+		border  : 2px solid var(--bg3);
+		position: relative;
+		z-index : 1;
+
+		&+& {
+			margin-left: -0.4em;
+		}
 	}
 }

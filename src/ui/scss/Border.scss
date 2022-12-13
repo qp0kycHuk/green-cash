@@ -1,23 +1,23 @@
 
 .bd {
   &-right {
-    border-right: 1px solid #E2E8F0;
+    border-right: 1px solid var(--color-text-20);
   }
 
   &-left {
-    border-left: 1px solid #E2E8F0;
+    border-left: 1px solid var(--color-text-20);
   }
 
   &-top {
-    border-top: 1px solid #E2E8F0;
+    border-top: 1px solid var(--color-text-20);
   }
 
   &-bottom {
-    border-bottom: 1px solid #E2E8F0;
+    border-bottom: 1px solid var(--color-text-20);
   }
 
   &-all {
-    border: 1px solid #E2E8F0;
+    border: 1px solid var(--color-text-20);
   }
 
   &-white {

@@ -1,4 +1,3 @@
-
 .flex {
 	display: flex;
 
@@ -60,6 +59,10 @@
 		&-center {
 			align-self: center;
 		}
+	}
+
+	&-col {
+		flex-direction: column;
 	}
 
 	&-grow {
