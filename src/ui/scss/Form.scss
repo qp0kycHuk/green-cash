@@ -26,14 +26,16 @@
 
 
 	&-input {
+		--size        : 48px;
+		--input-radius: 8px;
+
 		outline  : none !important;
 		display  : flex;
-		height   : 48px;
+		height   : var(--size);
 		position : relative;
 		padding  : calc(var(--spacing) * 2) calc(var(--spacing) * 4);
 		flex-grow: 1;
 
-		--input-radius: 8px;
 
 		cursor    : inherit;
 		outline   : none;
@@ -44,7 +46,30 @@
 		color      : var(--color-text);
 
 		background-color: var(--bg3);
-		border          : 1px solid var(--color-text-10);
+		border          : 1px solid var(--color-text-20);
+
+		@include AddMedia {
+
+			// size
+			&-large {
+				--size        : 52px;
+				--input-radius: 16px;
+			}
+
+			&-small {
+				--size        : 38px;
+				--input-radius: 4px;
+
+			}
+
+			&-xsmall {
+				--size        : 32px;
+				padding-top   : 0;
+				padding-bottom: 0;
+				--input-radius: 4px;
+			}
+		}
+
 
 		&:first-of-type {
 			border-start-start-radius: var(--input-radius);
@@ -60,10 +85,9 @@
 			margin-left: -1px;
 		}
 
-
 		&:focus {
 			border-color: var(--color-primary);
-			box-shadow: 0 0 0 1px var(--color-primary);
+			box-shadow  : 0 0 0 1px var(--color-primary);
 			z-index     : 2;
 		}
 
@@ -78,8 +102,6 @@
 			}
 		}
 
-
-
 		&::placeholder {
 			opacity: 1;
 		}
@@ -89,8 +111,6 @@
 			background    : none;
 			pointer-events: none;
 		}
-
-
 
 		&.active {
 			border-color: var(--color-primary);
@@ -110,7 +130,7 @@
 
 
 		&:is(input) {
-			width         : 100px;
+			width         : 120px;
 			// line-height: 40px;
 		}
 

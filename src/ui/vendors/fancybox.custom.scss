@@ -16,7 +16,7 @@
   .fancybox__content {
     padding   : 0;
     background: none;
-
+    max-width : 100%;
   }
 
   .carousel__button.is-close {
@@ -29,14 +29,13 @@
     animation-delay: .35s !important;
 
     @media(max-width:$sm) {
-      position: absolute;
       width   : 32px;
       height  : 32px;
-      top     : 16px;
-      right   : 16px;
+      top     : 0;
+      right   : 0;
       padding : 0;
+      border-radius: 0;
 
-      border-radius: 50%;
       background   : #F3F3F5;
     }
 

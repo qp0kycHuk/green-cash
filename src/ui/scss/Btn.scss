@@ -17,12 +17,13 @@
 	--btn-color-light: var(--color-text-20);
 	--btn-color      : var(--color-text);
 	--btn-text       : var(--bg3);
+	--btn-radius     : 8px;
 
-	background : none;
-	border     : none;
-	outline    : none;
-	user-select: none;
-	position   : relative;
+	background       : none;
+	border           : none;
+	outline          : none;
+	user-select      : none;
+	position         : relative;
 
 	display        : flex;
 	align-items    : center;
@@ -31,7 +32,7 @@
 	--size       : 48px;
 	height       : var(--size);
 	padding      : 0 calc(var(--size) / 2);
-	border-radius: 8px;
+	border-radius: var(--btn-radius);
 
 	font-size  : 16px;
 	font-family: var(--font-base);
@@ -67,18 +68,34 @@
 		transform: translateY(2px);
 	}
 
+	&-elastic {
+		transition: .5s elastic(0.42, 0.47);
+
+		&:active {
+			transform: scaleX(1.15) scaleY(0.85);
+		}
+
+	}
+
 	&:not(a, button, label):active {
 		transform: none;
 	}
 
-	// size
-	&-large {
-		--size       : 52px;
-		border-radius: 16px;
-	}
+	@include AddMedia {
 
-	&-small {
-		--size: 38px;
+		// size
+		&-large {
+			--size       : 52px;
+			--btn-radius: 16px;
+		}
+
+		&-small {
+			--size: 38px;
+		}
+
+		&-xsmall {
+			--size: 32px;
+		}
 	}
 
 	// color
@@ -233,10 +250,10 @@
 	}
 
 	&-fab {
-		border-radius: 50%;
+		--btn-radius: 50%;
 	}
 
 	&--rounded {
-		border-radius: var(--size);
+		--btn-radius: var(--size);
 	}
 }
