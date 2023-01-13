@@ -608,14 +608,19 @@ body {
 		width: max-content;
 		max-width: 100%;
 
+		&--min {
+			grid-template-columns: 188px 192px 192px;
+		}
+
 		@media (max-width:$lg) {
 			grid-template-columns: 150px auto 1fr 1fr;
 			grid-gap: 8px;
 		}
 
-		@media (max-width:$lg) {
+		@media (max-width:$sm) {
 			grid-template-columns: 1fr 1fr;
 		}
+
 	}
 
 	&-item {
@@ -633,7 +638,7 @@ body {
 		}
 
 		&__title {
-			@media (max-width:$lg) {
+			@media (max-width:$lg) and (min-width:$sm) {
 				grid-row: span 2;
 			}
 		}
@@ -647,7 +652,7 @@ body {
 			font-weight: 500;
 			font-size: 14px;
 
-			@media (max-width:$lg) {
+			@media (max-width:$lg) and (min-width:$sm) {
 				grid-row: span 2;
 			}
 
