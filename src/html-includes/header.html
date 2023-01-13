@@ -23,16 +23,25 @@
             <div class="text-body-2 fade-60 lh-1 d-none d-md-block">Пользователь</div>
         </div>
 
-        <div class="header-user ml-auto">
-            <button class="header-user__btn btn btn--primary btn--white-bg btn--rounded pl-1 pr-1 pr-sm-3">
+        <div class="header-user ml-auto" data-toggle-cover>
+            <button class="header-user__btn btn btn--primary btn--white-bg btn--rounded pl-1 pr-1 pr-sm-3" data-toggle-link>
                 <div class="image image--round icon text-h2 text-md-h0 mr-sm-4">
                     <img src="img/test-1.jpg" alt="">
                 </div>
-                <span class="lh-1 color-text d-none d-sm-block">Александр</span>
-                <svg class="icon ml-4 color-text fade-80 text-small d-none d-sm-block">
+                <span class="lh-1 color-text text-body-2 text--demibold d-none d-sm-block">Александр</span>
+                <svg class="icon header-user__btn-arrow ml-4 color-text fade-80 text-small d-none d-sm-block">
                     <use xlink:href="img/icons.svg#to-right" />
                 </svg>
             </button>
+            <div class="header-user-tooltip" data-toggle-content>
+                <div class="text-small text--demibold mb-2">
+                    Ярошук Александр
+                    Вячеславович
+                </div>
+                <div class="text-small mb-4">+7 (918) 000-00-00</div>
+                <button class="btn btn--primary btn--light w-100 btn-small"><div class="text-small text--demibold">Редактировать</div></button>
+                <button class="btn btn--red mt-2 btn--fill w-100 btn-small"><div class="text-small text--demibold">Выйти</div></button>
+            </div>
         </div>
 
     </header>
@@ -101,7 +110,9 @@
 
             <div class="bd-top mt-10 mb-6"></div>
             <button class="btn btn--primary">
-                <svg class="icon text-h6 mr-4"><use xlink:href="img/icons.svg#plus" /></svg>
+                <svg class="icon text-h6 mr-4">
+                    <use xlink:href="img/icons.svg#plus" />
+                </svg>
                 <div class="mr-auto">Добавить проект</div>
             </button>
 

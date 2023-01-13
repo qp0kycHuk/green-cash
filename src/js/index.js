@@ -67,7 +67,7 @@ function loadHandler() {
 
 	window.addEventListener('toggleopen', toggleopenHaandler)
 	window.addEventListener('toggleclose', togglecloseHaandler)
-} 
+}
 
 function toggleopenHaandler(event) {
 	if (event.detail.target.classList.contains('-menu-')) {
@@ -80,3 +80,55 @@ function togglecloseHaandler(event) {
 		document.body.classList.remove('menu-open')
 	}
 }
+
+function getImagePreview(file) {
+	return new Promise((resolve, reject) => {
+		const reader = new FileReader();
+		reader.readAsDataURL(file);
+		reader.onload = () => {
+			if (reader.result) {
+				resolve(reader.result.toString())
+			} else {
+				reject('reader.readAsDataURL Error')
+			}
+		};
+
+		reader.onerror = () => {
+			reject('reader.readAsDataURL Error')
+		}
+
+	})
+}
+
+document.addEventListener('change', async (event) => {
+	if (event.target.closest('[data-image-field]')) {
+		const cover = event.target.closest('[data-image-field]')
+		const target = cover.querySelector('[data-target]')
+		const preview = cover.querySelector('[data-preview]')
+
+		if (event.target.files.length > 0) {
+			target.disabled = true
+			const dataUrl = await getImagePreview(event.target.files[0])
+			preview.src = dataUrl
+			target.disabled = false
+			cover.classList.add('active')
+
+		} else {
+			preview.src = ''
+			cover.classList.remove('active')
+		}
+	}
+})
+
+document.addEventListener('click', (event) => {
+	if (event.target.closest('[data-image-field]') && event.target.closest('[data-remove]')) {
+		const cover = event.target.closest('[data-image-field]')
+		const target = cover.querySelector('[data-target]')
+		const preview = cover.querySelector('[data-preview]')
+
+		target.value = null
+		console.log(target.value, target.files);
+		preview.src = ''
+		cover.classList.remove('active')
+	}
+})

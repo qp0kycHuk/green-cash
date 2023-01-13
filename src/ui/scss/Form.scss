@@ -180,19 +180,19 @@
 	}
 
 	&-toggle-target {
-		--cover-width : 46px;
-		--cover-height: 26px;
-		--padding     : 2px;
+		--cover-width : 30px;
+		--cover-height: 16px;
+		--padding     : 1px;
 		width         : var(--cover-width);
 		min-width     : var(--cover-width);
 		height        : var(--cover-height);
-		background    : var(--color-text-40);
+		background    : var(--color-text-20);
 		border-radius : 20px;
 		position      : relative;
 		overflow      : hidden;
 
 		&:before {
-			--size: 22px;
+			--size: 14px;
 
 			content      : '';
 			width        : var(--size);
@@ -212,7 +212,7 @@
 	}
 
 	&-input-checkbox:checked~&-toggle-target {
-		background: var(--color-primary);
+		background: var(--color-green);
 
 		&::before {
 			transform: translateX(calc(var(--cover-width) - var(--size) - var(--padding) - var(--padding)));
