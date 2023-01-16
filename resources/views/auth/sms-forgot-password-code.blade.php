@@ -20,10 +20,7 @@
                 @csrf
 
                 <div class="flex flex-col items-center mt-5">
-                    <button
-                        class="transition text-dark font-semibold border-dark border-b border-dashed active:translate-y-0.5">
-                        Получить еще один код
-                    </button>
+                    <button>Получить еще один код</button>
                 </div>
             </form>
 

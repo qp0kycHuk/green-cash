@@ -13,15 +13,13 @@
         <form method="POST" action="{{ route('verification.phone.resend') }}">
             @csrf
 
-            <button type="submit" class="btn btn--link btn--primary mt-5">
-                Выслать другой код
-            </button>
+            <button typ>Выслать другой код</button>
         </form>
 
         <form method="POST" action="{{ route('logout') }}">
             @csrf
 
-            <button type="submit" class="btn btn--link btn--primary mt-2">
+            <button class="btn btn--link btn--primary mt-2">
                 Выйти
             </button>
         </form>
