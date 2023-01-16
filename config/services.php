@@ -31,4 +31,13 @@ return [
         'region' => env('AWS_DEFAULT_REGION', 'us-east-1'),
     ],
 
+    'smscru' => [
+        'login'  => env('SMSCRU_LOGIN'),
+        'secret' => env('SMSCRU_SECRET'),
+        'sender' => env('SMSCRU_SENDER'),
+        'extra'  => [
+            // any other API parameters
+            // 'tinyurl' => 1
+        ],
+    ],
 ];

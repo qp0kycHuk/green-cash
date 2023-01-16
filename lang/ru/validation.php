@@ -1,0 +1,140 @@
+<?php
+
+/*
+|--------------------------------------------------------------------------
+| Validation Language Lines
+|--------------------------------------------------------------------------
+|
+| The following language lines contain the default error messages used by
+| the validator class. Some of these rules have multiple versions such
+| as the size rules. Feel free to tweak each of these messages here.
+|
+*/
+
+return [
+    'accepted'             => 'Вы должны принять <strong>&laquo;:attribute&raquo;</strong>.',
+    'accepted_if'          => 'Вы должны принять <strong>&laquo;:attribute&raquo;</strong>, когда :other соответствует :value.',
+    'active_url'           => 'Значение поля <strong>&laquo;:attribute&raquo;</strong> не является действительным URL.',
+    'after'                => 'Значение поля <strong>&laquo;:attribute&raquo;</strong> должно быть датой после :date.',
+    'after_or_equal'       => 'Значение поля <strong>&laquo;:attribute&raquo;</strong> должно быть датой после или равной :date.',
+    'alpha'                => 'Значение поля <strong>&laquo;:attribute&raquo;</strong> может содержать только буквы.',
+    'alpha_dash'           => 'Значение поля <strong>&laquo;:attribute&raquo;</strong> может содержать только буквы, цифры, дефис и нижнее подчеркивание.',
+    'alpha_num'            => 'Значение поля <strong>&laquo;:attribute&raquo;</strong> может содержать только буквы и цифры.',
+    'array'                => 'Значение поля <strong>&laquo;:attribute&raquo;</strong> должно быть массивом.',
+    'before'               => 'Значение поля <strong>&laquo;:attribute&raquo;</strong> должно быть датой до :date.',
+    'before_or_equal'      => 'Значение поля <strong>&laquo;:attribute&raquo;</strong> должно быть датой до или равной :date.',
+    'between'              => [
+        'array'   => 'Количество элементов в поле <strong>&laquo;:attribute&raquo;</strong> должно быть <strong>между :min и :max</strong>.',
+        'file'    => 'Размер файла в поле <strong>&laquo;:attribute&raquo;</strong> должен быть <strong>между :min и :max</strong> Килобайт(а).',
+        'numeric' => 'Значение поля <strong>&laquo;:attribute&raquo;</strong> должно быть <strong>между :min и :max</strong>.',
+        'string'  => 'Количество символов в поле <strong>&laquo;:attribute&raquo;</strong> должно быть <strong>между :min и :max</strong>.',
+    ],
+    'boolean'              => 'Значение поля <strong>&laquo;:attribute&raquo;</strong> должно быть логического типа.',
+    'confirmed'            => 'Значение поля <strong>&laquo;:attribute&raquo; не совпадает</strong> с подтверждаемым.',
+    'current_password'     => 'Неверный пароль.',
+    'date'                 => 'Значение поля <strong>&laquo;:attribute&raquo;</strong> не является датой.',
+    'date_equals'          => 'Значение поля <strong>&laquo;:attribute&raquo;</strong> должно быть датой равной :date.',
+    'date_format'          => 'Значение поля <strong>&laquo;:attribute&raquo;</strong> не соответствует формату даты :format.',
+    'declined'             => 'Поле <strong>&laquo;:attribute&raquo;</strong> должно быть отклонено.',
+    'declined_if'          => 'Поле <strong>&laquo;:attribute&raquo;</strong> должно быть отклонено, когда :other равно :value.',
+    'different'            => 'Значения полей <strong>&laquo;:attribute&raquo;</strong> и :other должны различаться.',
+    'digits'               => 'Длина значения цифрового поля <strong>&laquo;:attribute&raquo;</strong> должна быть :digits.',
+    'digits_between'       => 'Длина значения цифрового поля <strong>&laquo;:attribute&raquo;</strong> должна быть <strong>между :min и :max</strong>.',
+    'dimensions'           => 'Изображение в поле <strong>&laquo;:attribute&raquo;</strong> имеет недопустимые размеры.',
+    'distinct'             => 'Значения поля <strong>&laquo;:attribute&raquo;</strong> не должны повторяться.',
+    'email'                => 'Значение поля <strong>&laquo;:attribute&raquo;</strong> должно быть действительным электронным адресом.',
+    'ends_with'            => 'Поле <strong>&laquo;:attribute&raquo;</strong> должно заканчиваться одним из следующих значений: :values',
+    'enum'                 => 'Выбранное значение для <strong>&laquo;:attribute&raquo;</strong> некорректно.',
+    'exists'               => 'Выбранное значение для <strong>&laquo;:attribute&raquo;</strong> некорректно.',
+    'file'                 => 'В поле <strong>&laquo;:attribute&raquo;</strong> должен быть указан файл.',
+    'filled'               => 'Поле <strong>&laquo;:attribute&raquo;</strong> обязательно для заполнения.',
+    'gt'                   => [
+        'array'   => 'Количество элементов в поле <strong>&laquo;:attribute&raquo;</strong> должно быть больше :value.',
+        'file'    => 'Размер файла в поле <strong>&laquo;:attribute&raquo;</strong> должен быть больше :value Килобайт(а).',
+        'numeric' => 'Значение поля <strong>&laquo;:attribute&raquo;</strong> должно быть больше :value.',
+        'string'  => 'Количество символов в поле <strong>&laquo;:attribute&raquo;</strong> должно быть больше :value.',
+    ],
+    'gte'                  => [
+        'array'   => 'Количество элементов в поле <strong>&laquo;:attribute&raquo;</strong> должно быть :value или больше.',
+        'file'    => 'Размер файла в поле <strong>&laquo;:attribute&raquo;</strong> должен быть :value Килобайт(а) или больше.',
+        'numeric' => 'Значение поля <strong>&laquo;:attribute&raquo;</strong> должно быть :value или больше.',
+        'string'  => 'Количество символов в поле <strong>&laquo;:attribute&raquo;</strong> должно быть :value или больше.',
+    ],
+    'image'                => 'Файл в поле <strong>&laquo;:attribute&raquo;</strong> должен быть изображением.',
+    'in'                   => 'Выбранное значение для <strong>&laquo;:attribute&raquo;</strong> некорректно.',
+    'in_array'             => 'Значение поля <strong>&laquo;:attribute&raquo;</strong> не существует в :other.',
+    'integer'              => 'Значение поля <strong>&laquo;:attribute&raquo;</strong> должно быть целым числом.',
+    'ip'                   => 'Значение поля <strong>&laquo;:attribute&raquo;</strong> должно быть действительным IP-адресом.',
+    'ipv4'                 => 'Значение поля <strong>&laquo;:attribute&raquo;</strong> должно быть действительным IPv4-адресом.',
+    'ipv6'                 => 'Значение поля <strong>&laquo;:attribute&raquo;</strong> должно быть действительным IPv6-адресом.',
+    'json'                 => 'Значение поля <strong>&laquo;:attribute&raquo;</strong> должно быть JSON строкой.',
+    'lt'                   => [
+        'array'   => 'Количество элементов в поле <strong>&laquo;:attribute&raquo;</strong> должно быть меньше :value.',
+        'file'    => 'Размер файла в поле <strong>&laquo;:attribute&raquo;</strong> должен быть меньше :value Килобайт(а).',
+        'numeric' => 'Значение поля <strong>&laquo;:attribute&raquo;</strong> должно быть меньше :value.',
+        'string'  => 'Количество символов в поле <strong>&laquo;:attribute&raquo;</strong> должно быть меньше :value.',
+    ],
+    'lte'                  => [
+        'array'   => 'Количество элементов в поле <strong>&laquo;:attribute&raquo;</strong> должно быть :value или меньше.',
+        'file'    => 'Размер файла в поле <strong>&laquo;:attribute&raquo;</strong> должен быть :value Килобайт(а) или меньше.',
+        'numeric' => 'Значение поля <strong>&laquo;:attribute&raquo;</strong> должно быть :value или меньше.',
+        'string'  => 'Количество символов в поле <strong>&laquo;:attribute&raquo;</strong> должно быть :value или меньше.',
+    ],
+    'mac_address'          => 'Значение поля <strong>&laquo;:attribute&raquo;</strong> должно быть корректным MAC-адресом.',
+    'max'                  => [
+        'array'   => 'Количество элементов в поле <strong>&laquo;:attribute&raquo;</strong> не может превышать :max.',
+        'file'    => 'Размер файла в поле <strong>&laquo;:attribute&raquo; не может быть больше :max Килобайт(а).</strong>',
+        'numeric' => 'Значение поля <strong>&laquo;:attribute&raquo;</strong> не может быть больше :max.</strong>',
+        'string'  => 'Количество символов в поле <strong>&laquo;:attribute&raquo;</strong> не может превышать :max.',
+    ],
+    'mimes'                => 'Файл в поле <strong>&laquo;:attribute&raquo;</strong> должен быть одного из следующих типов: :values.',
+    'mimetypes'            => 'Файл в поле <strong>&laquo;:attribute&raquo;</strong> должен быть одного из следующих типов: :values.',
+    'min'                  => [
+        'array'   => 'Количество элементов в поле <strong>&laquo;:attribute&raquo;</strong> должно быть <strong>не меньше :min</strong>.',
+        'file'    => 'Размер файла в поле <strong>&laquo;:attribute&raquo;</strong> должен быть <strong>не меньше :min</strong> Килобайт(а).',
+        'numeric' => 'Значение поля <strong>&laquo;:attribute&raquo;</strong> должно быть <strong>не меньше :min</strong>.',
+        'string'  => 'Количество символов в поле <strong>&laquo;:attribute&raquo;</strong> должно быть <strong>не меньше :min</strong>.',
+    ],
+    'multiple_of'          => 'Значение поля <strong>&laquo;:attribute&raquo;</strong> должно быть кратным :value',
+    'not_in'               => 'Выбранное значение для <strong>&laquo;:attribute&raquo;</strong> некорректно.',
+    'not_regex'            => 'Значение поля <strong>&laquo;:attribute&raquo;</strong> некорректно.',
+    'numeric'              => 'Значение поля <strong>&laquo;:attribute&raquo;</strong> должно быть числом.',
+    'password'             => 'Некорректный пароль.',
+    'present'              => 'Значение поля <strong>&laquo;:attribute&raquo;</strong> должно присутствовать.',
+    'prohibited'           => 'Значение поля <strong>&laquo;:attribute&raquo;</strong> запрещено.',
+    'prohibited_if'        => 'Значение поля <strong>&laquo;:attribute&raquo;</strong> запрещено, когда :other равно :value.',
+    'prohibited_unless'    => 'Значение поля <strong>&laquo;:attribute&raquo;</strong> запрещено, если :other не состоит в :values.',
+    'prohibits'            => 'Значение поля <strong>&laquo;:attribute&raquo;</strong> запрещает присутствие :other.',
+    'regex'                => 'Значение поля <strong>&laquo;:attribute&raquo;</strong> некорректно.',
+    'required'             => 'Поле <strong>&laquo;:attribute&raquo;</strong> обязательно для заполнения.',
+    'required_array_keys'  => 'Массив в поле <strong>&laquo;:attribute&raquo;</strong> обязательно должен иметь ключи: :values',
+    'required_if'          => 'Поле <strong>&laquo;:attribute&raquo;</strong> обязательно для заполнения, когда :other равно :value.',
+    'required_unless'      => 'Поле <strong>&laquo;:attribute&raquo;</strong> обязательно для заполнения, когда :other не равно :values.',
+    'required_with'        => 'Поле <strong>&laquo;:attribute&raquo;</strong> обязательно для заполнения, когда :values указано.',
+    'required_with_all'    => 'Поле <strong>&laquo;:attribute&raquo;</strong> обязательно для заполнения, когда :values указано.',
+    'required_without'     => 'Поле <strong>&laquo;:attribute&raquo;</strong> обязательно для заполнения, когда :values не указано.',
+    'required_without_all' => 'Поле <strong>&laquo;:attribute&raquo;</strong> обязательно для заполнения, когда ни одно из :values не указано.',
+    'same'                 => 'Значения полей <strong>&laquo;:attribute&raquo;</strong> и :other должны совпадать.',
+    'size'                 => [
+        'array'   => 'Количество элементов в поле <strong>&laquo;:attribute&raquo;</strong> должно быть равным :size.',
+        'file'    => 'Размер файла в поле <strong>&laquo;:attribute&raquo;</strong> должен быть равен :size Килобайт(а).',
+        'numeric' => 'Значение поля <strong>&laquo;:attribute&raquo;</strong> должно быть равным :size.',
+        'string'  => 'Количество символов в поле <strong>&laquo;:attribute&raquo;</strong> должно быть равным :size.',
+    ],
+    'starts_with'          => 'Поле <strong>&laquo;:attribute&raquo;</strong> должно начинаться с одного из следующих значений: :values',
+    'string'               => 'Значение поля <strong>&laquo;:attribute&raquo;</strong> должно быть строкой.',
+    'timezone'             => 'Значение поля <strong>&laquo;:attribute&raquo;</strong> должно быть действительным часовым поясом.',
+    'unique'               => 'Такое значение поля <strong>&laquo;:attribute&raquo;</strong> уже существует.',
+    'uploaded'             => 'Загрузка поля <strong>&laquo;:attribute&raquo;</strong> не удалась.',
+    'url'                  => 'Значение поля <strong>&laquo;:attribute&raquo;</strong> имеет ошибочный формат URL.',
+    'uuid'                 => 'Значение поля <strong>&laquo;:attribute&raquo;</strong> должно быть корректным UUID.',
+    'attributes' => [
+        'password' => 'пароль',
+        'phone' => 'телефон'
+    ],
+    'custom'               => [
+        'attribute-name' => [
+            'rule-name' => 'custom-message',
+        ],
+    ],
+];

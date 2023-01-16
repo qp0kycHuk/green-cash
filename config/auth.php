@@ -108,4 +108,18 @@ return [
 
     'password_timeout' => 10800,
 
+    /*
+    |--------------------------------------------------------------------------
+    | Global validation requirements
+    |--------------------------------------------------------------------------
+    |
+    | Here you may define the global validation requirements for the phone and code
+    | fields that will be used to authorize, register and password reset
+    | controllers.
+    |
+    */
+
+    'code' => ['required', 'numeric'],
+    'phone' => ['required', 'numeric', 'digits_between:10,11'],
+    'password' => ['required', 'string']
 ];

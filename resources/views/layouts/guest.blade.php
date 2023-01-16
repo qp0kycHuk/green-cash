@@ -1,29 +1,46 @@
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <meta name="csrf-token" content="{{ csrf_token() }}">
 
-        <title>{{ config('app.name', 'Laravel') }}</title>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
 
-        <!-- Fonts -->
-        <link rel="stylesheet" href="https://fonts.bunny.net/css2?family=Nunito:wght@400;600;700&display=swap">
+    <title>{{ config('app.name', 'Laravel') }}</title>
 
-        <!-- Scripts -->
-        @vite(['resources/css/app.css', 'resources/js/app.js'])
-    </head>
-    <body class="font-sans text-gray-900 antialiased">
-        <div class="min-h-screen flex flex-col sm:justify-center items-center pt-6 sm:pt-0 bg-gray-100">
-            <div>
-                <a href="/">
-                    <x-application-logo class="w-20 h-20 fill-current text-gray-500" />
-                </a>
-            </div>
+    <!-- Fonts -->
+    <link rel="stylesheet" href="https://fonts.bunny.net/css2?family=Nunito:wght@400;600;700&display=swap">
 
-            <div class="w-full sm:max-w-md mt-6 px-6 py-4 bg-white shadow-md overflow-hidden sm:rounded-lg">
-                {{ $slot }}
-            </div>
+    <!-- Scripts -->
+    @vite(['resources/css/style.css', 'resources/js/index.js'])
+</head>
+
+<body>
+    <header class="header bg-l3">
+        <button class="btn btn-icon btn-small btn--primary mr-auto header-burger" data-toggle-link="mobile-menu">
+            <svg class="icon color-text">
+                <use xlink:href="{{ asset('img/icons.svg#menu') }}" />
+            </svg>
+        </button>
+        <div class="flex flex-align-center">
+            <x-application-logo />
+            <div class="mx-5 bd-left py-3 d-none d-md-block"></div>
+            <div class="text-body-2 fade-60 lh-1 d-none d-md-block">Пользователь</div>
         </div>
-    </body>
+
+        <div class="header-user ml-auto">
+            <button class="header-user__btn btn btn--primary btn--white-bg btn--rounded pl-1 pr-1 pr-sm-3">
+                <div class="image image--round icon text-h2 text-md-h0 mr-sm-4">
+                    <img src="{{ asset('img/test-1.jpg') }}" alt="">
+                </div>
+                <span class="lh-1 color-text d-none d-sm-block">Александр</span>
+                <svg class="icon ml-4 color-text fade-80 text-small d-none d-sm-block">
+                    <use xlink:href="{{ asset('img/icons.svg#to-right') }}" />
+                </svg>
+            </button>
+        </div>
+    </header>
+    {{ $slot }}
+</body>
+
 </html>

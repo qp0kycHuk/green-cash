@@ -2,15 +2,17 @@
 
 namespace App\Models;
 
-// use Illuminate\Contracts\Auth\MustVerifyEmail;
-use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Foundation\Auth\User as Authenticatable;
-use Illuminate\Notifications\Notifiable;
+use App\Traits\MustVerifyPhone;
 use Laravel\Sanctum\HasApiTokens;
+use Illuminate\Notifications\Notifiable;
+use Illuminate\Contracts\Auth\MustVerifyEmail;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
+use App\Interfaces\MustVerifyPhone as IMustVerifyPhone;
+use Illuminate\Foundation\Auth\User as Authenticatable;
 
-class User extends Authenticatable
+class User extends Authenticatable implements IMustVerifyPhone
 {
-    use HasApiTokens, HasFactory, Notifiable;
+    use HasApiTokens, HasFactory, Notifiable, MustVerifyPhone;
 
     /**
      * The attributes that are mass assignable.
@@ -18,8 +20,8 @@ class User extends Authenticatable
      * @var array<int, string>
      */
     protected $fillable = [
-        'name',
-        'email',
+        'first_name',
+        'phone',
         'password',
     ];
 
@@ -39,6 +41,47 @@ class User extends Authenticatable
      * @var array<string, string>
      */
     protected $casts = [
-        'email_verified_at' => 'datetime',
+        'phone_verified_at' => 'datetime',
     ];
+
+    /**
+     * Returns a phone number of an array of phone numbers.
+     *
+     * @return int|array
+     */
+    public function routeNotificationForSmscru()
+    {
+        return $this->phone;
+    }
+
+    /**
+     * Get user by phone
+     *
+     * @param int $phone
+     * @return App\Models\User
+     */
+    public static function byPhone($phone)
+    {
+        return self::where('phone', $phone)->first();
+    }
+
+    /**
+     * Get user by token
+     * Retrieving user by temporary token while resetting the password
+     *
+     * @param string $token
+     * @return App\Models\User
+     */
+    public static function byToken($token)
+    {
+        return self::where('remember_token', $token)->first();
+    }
+
+    /**
+     * Check user role
+     */
+    public function hasRole($role)
+    {
+        return $this->role === $role;
+    }
 }

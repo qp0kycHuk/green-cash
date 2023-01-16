@@ -1,47 +1,42 @@
 <x-guest-layout>
-    <!-- Session Status -->
-    <x-auth-session-status class="mb-4" :status="session('status')" />
+    <x-auth-wrap title="Войти">
 
-    <form method="POST" action="{{ route('login') }}">
-        @csrf
+        @if (session('status') == 'password-changed-successfully')
+            <div class="text-center text-sm text-dark text-opacity-50 mb-5">
+                Теперь вы можете зайти используя новый пароль.
+            </div>
+        @endif
+        @if (session('status') !== 'phone-is-valid')
+            <form method="POST" action="{{ route('check-phone') }}">
+                @csrf
+                <!-- Phone -->
+                <x-input.phone />
 
-        <!-- Email Address -->
-        <div>
-            <x-input-label for="email" :value="__('Email')" />
-            <x-text-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required autofocus />
-            <x-input-error :messages="$errors->get('email')" class="mt-2" />
-        </div>
+                <x-button-auth>Войти</x-button-auth>
+            </form>
+        @else
+            <form method="POST" action="{{ route('login') }}">
+                @csrf
+                <!-- Phone -->
+                <x-input type="hidden" name="phone" :value="session('phone')" required />
 
-        <!-- Password -->
-        <div class="mt-4">
-            <x-input-label for="password" :value="__('Password')" />
+                <!-- Password -->
+                <x-input.password />
 
-            <x-text-input id="password" class="block mt-1 w-full"
-                            type="password"
-                            name="password"
-                            required autocomplete="current-password" />
+                <!-- Remember Me -->
+                <x-input.remember />
 
-            <x-input-error :messages="$errors->get('password')" class="mt-2" />
-        </div>
+                @if (Route::has('password.sms.phone'))
+                    <a href="{{ route('password.sms.phone') }}" class="btn btn--link btn--primary mt-4">
+                        Забыли пароль? Нажмите сюда!
+                    </a>
+                @endif
 
-        <!-- Remember Me -->
-        <div class="block mt-4">
-            <label for="remember_me" class="inline-flex items-center">
-                <input id="remember_me" type="checkbox" class="rounded border-gray-300 text-indigo-600 shadow-sm focus:ring-indigo-500" name="remember">
-                <span class="ml-2 text-sm text-gray-600">{{ __('Remember me') }}</span>
-            </label>
-        </div>
+                <x-button-auth>Войти</x-button-auth>
+            </form>
+        @endif
 
-        <div class="flex items-center justify-end mt-4">
-            @if (Route::has('password.request'))
-                <a class="underline text-sm text-gray-600 hover:text-gray-900 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" href="{{ route('password.request') }}">
-                    {{ __('Forgot your password?') }}
-                </a>
-            @endif
-
-            <x-primary-button class="ml-3">
-                {{ __('Log in') }}
-            </x-primary-button>
-        </div>
-    </form>
+        <!-- Validation Errors -->
+        <x-auth-validation-errors class="mb-4" :errors="$errors" />
+    </x-auth-wrap>
 </x-guest-layout>

@@ -1,0 +1,1 @@
+<div class="text-sm text-red text-right mt-2">{{ $error }}</div>
