@@ -13,7 +13,7 @@
         <form method="POST" action="{{ route('verification.phone.resend') }}">
             @csrf
 
-            <button typ>Выслать другой код</button>
+            <button class="mt-2">Выслать другой код</button>
         </form>
 
         <form method="POST" action="{{ route('logout') }}">

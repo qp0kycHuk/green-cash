@@ -14,12 +14,12 @@ class EnsureUserHasRole
      * @param  \Closure(\Illuminate\Http\Request): (\Illuminate\Http\Response|\Illuminate\Http\RedirectResponse)  $next
      * @return \Illuminate\Http\Response|\Illuminate\Http\RedirectResponse
      */
-    public function handle(Request $request, Closure $next, $role)
+    public function handle(Request $request, Closure $next, ...$roles)
     {
-        if (! $request->user()->hasRole($role)) {
-            return redirect('/');
+        if ($request->user()->hasRole($roles)) {
+            return $next($request);
         }
-
-        return $next($request);
+        
+        return redirect('/');
     }
 }

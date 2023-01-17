@@ -80,8 +80,10 @@ class User extends Authenticatable implements IMustVerifyPhone
     /**
      * Check user role
      */
-    public function hasRole($role)
+    public function hasRole($roles)
     {
-        return $this->role === $role;
+        return collect($roles)->first(function ($value, $key) {
+            return $value === $this->role;
+        });
     }
 }
