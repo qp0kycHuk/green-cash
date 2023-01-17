@@ -37,13 +37,21 @@
                 </svg>
             </button>
             <div class="header-user-tooltip" data-toggle-content>
-                <div class="text-small text--demibold mb-2">Ярошук Александр Вячеславович</div>
-                <div class="text-small mb-4">+7 (918) 000-00-00</div><button
-                    class="btn btn--primary btn--light w-100 btn-small">
+                <div class="text-small text--demibold mb-2">
+                    {{ Auth::user()->last_name }}
+                    {{ Auth::user()->first_name }}
+                    {{ Auth::user()->patronymic }}
+                </div>
+                <div class="text-small mb-4">+{{ Auth::user()->phone }}</div>
+                <button class="btn btn--primary btn--light w-100 btn-small">
                     <div class="text-small text--demibold">Редактировать</div>
-                </button> <button class="btn btn--red mt-2 btn--fill w-100 btn-small">
-                    <div class="text-small text--demibold">Выйти</div>
                 </button>
+                <form method="POST" action="{{ route('logout') }}">
+                    @csrf
+                    <button class="btn btn--red mt-2 btn--fill w-100 btn-small">
+                        <div class="text-small text--demibold">Выйти</div>
+                    </button>
+                </form>
             </div>
         </div>
     </header>
