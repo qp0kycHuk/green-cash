@@ -21,8 +21,15 @@ class User extends Authenticatable implements IMustVerifyPhone
      */
     protected $fillable = [
         'first_name',
+        'last_name',
+        'patronymic',
         'phone',
+        'photo',
         'password',
+        'role',
+        'position',
+        'access',
+        'status'
     ];
 
     /**
@@ -78,12 +85,20 @@ class User extends Authenticatable implements IMustVerifyPhone
     }
 
     /**
-     * Check user role
+     * User roles
      */
     public function hasRole($roles)
     {
         return collect($roles)->first(function ($value, $key) {
             return $value === $this->role;
         });
+    }
+
+    /**
+     * Check user status
+     */
+    public function status()
+    {
+        return (bool) $this->status;
     }
 }

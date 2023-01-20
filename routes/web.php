@@ -29,7 +29,7 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-Route::middleware(['auth', 'auth.role:admin,supervisor',])->group(function () {
+Route::middleware(['auth', 'user.role:admin,supervisor', 'user.active'])->group(function () {
     Route::get('/users', [UserController::class, 'index'])->name('users');
 });
 

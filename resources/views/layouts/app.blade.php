@@ -12,7 +12,8 @@
     <link rel="stylesheet" href="https://fonts.bunny.net/css2?family=Nunito:wght@400;600;700&display=swap">
 
     <!-- Scripts -->
-    @vite(['resources/css/style.css', 'resources/js/index.js'])
+    @vite(['resources/css/style.css', 'resources/js/index.js', 'resources/js/app.js'])
+    @livewireStyles
 </head>
 
 <body>
@@ -42,7 +43,7 @@
                     {{ Auth::user()->first_name }}
                     {{ Auth::user()->patronymic }}
                 </div>
-                <div class="text-small mb-4">+{{ Auth::user()->phone }}</div>
+                <div class="text-small mb-4">{{ phone(Auth::user()->phone) }}</div>
                 <button class="btn btn--primary btn--light w-100 btn-small">
                     <div class="text-small text--demibold">Редактировать</div>
                 </button>
@@ -64,6 +65,10 @@
             </div>
         </div>
     </section>
+    <livewire:user.edit />
+    <livewire:user.add />
+    <livewire:user.activate />
+    @livewireScripts
 </body>
 
 </html>

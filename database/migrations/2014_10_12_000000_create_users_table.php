@@ -24,7 +24,11 @@ return new class extends Migration
             $table->timestamp('phone_verified_at')->nullable();
             $table->bigInteger('phone_verify_code')->nullable();
             $table->string('password');
+            $table->string('photo')->nullable();
             $table->string('role', 100)->nullable();
+            $table->string('position', 100)->nullable();
+            $table->json('access')->nullable();
+            $table->boolean('status')->default(0)->nullable();
             $table->rememberToken();
             $table->timestamps();
         });
