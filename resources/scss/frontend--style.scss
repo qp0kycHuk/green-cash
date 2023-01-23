@@ -56,6 +56,7 @@ body {
 	display: flex;
 	flex-direction: column;
 
+	&.dialog-opened,
 	&.menu-open {
 		overflow: hidden;
 	}
@@ -800,7 +801,56 @@ body {
 	display: flex;
 	flex-direction: column;
 	align-items: center;
-	background: #FFFFFF;
+	background: var(--bg3);
 	border-radius: 16px;
 	padding: 38px 15px;
+}
+
+
+.dialog {
+	&-wrapper {
+		position: fixed;
+		left: 0;
+		top: 0;
+		width: 100%;
+		height: 100%;
+		overflow: auto;
+		padding: 15px;
+		display: flex;
+		align-items: flex-start;
+		z-index: var(--zi-l8);
+
+		&::-webkit-scrollbar {
+			display: none;
+		}
+	}
+
+	&-shadow {
+		position: fixed;
+		inset: 0;
+		background: rgba(0, 0, 0, 0.5);
+		z-index: var(--zi-l8);
+	}
+
+	&-content {
+		margin: auto;
+		position: relative;
+		z-index: 2;
+		max-width: 100%;
+	}
+
+	&-close {
+		position: fixed;
+		right: 0;
+		top: 0;
+		padding: 10px;
+		z-index: var(--zi-l9);
+
+		@media(min-width:$sm) {
+			.btn {
+				color: #fff;
+			}
+
+		}
+	}
 }
