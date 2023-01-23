@@ -42,7 +42,7 @@
     </a>
     <a href="{{ route('users') }}" class="btn btn--primary color-text px-2 mb-1">
         <svg class="icon mr-2 text-h6 fade-80 color-primary">
-            <use xlink:href="img/icons.svg#user" />
+            <use xlink:href="img/icons.svg#users" />
         </svg>
         <span class="mr-auto text-body-2 text--demibold lh-1">Пользователи</span>
         <svg class="icon text-small fade-40">

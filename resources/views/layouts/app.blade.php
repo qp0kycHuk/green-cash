@@ -12,7 +12,7 @@
     <link rel="stylesheet" href="https://fonts.bunny.net/css2?family=Nunito:wght@400;600;700&display=swap">
 
     <!-- Scripts -->
-    @vite(['resources/css/style.css', 'resources/js/index.js', 'resources/js/app.js'])
+    @vite(['resources/scss/index.scss', 'resources/js/index.js', 'resources/js/app.js'])
     @livewireStyles
 </head>
 
