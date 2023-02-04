@@ -16,7 +16,7 @@ class Card extends Component
 
     public function mount()
     {
-        $this->projects =  Project::whereIn('slug', json_decode($this->user->access) ?? [])->get();
+        $this->projects =  Project::whereIn('slug', $this->user->access ?? [])->get();
     }
 
     public function render()

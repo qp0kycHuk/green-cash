@@ -19,22 +19,22 @@
 <body>
     <header class="header bg-l3"><button class="btn btn-icon btn-small btn--primary mr-auto header-burger"
             data-toggle-link="mobile-menu"><svg class="icon color-text">
-                <use xlink:href="img/icons.svg#menu" />
+                <use xlink:href="{{ asset('img/icons.svg#menu') }}" />
             </svg></button>
         <div class="flex flex-align-center"><svg class="header-logo">
-                <use xlink:href="img/icons.svg#logo" />
+                <use xlink:href="{{ asset('img/icons.svg#logo') }}" />
             </svg>
             <div class="mx-5 bd-left py-3 d-none d-md-block"></div>
             <div class="text-body-2 fade-60 lh-1 d-none d-md-block">Пользователь</div>
         </div>
         <div class="header-user ml-auto" data-toggle-cover><button
                 class="header-user__btn btn btn--primary btn--white-bg btn--rounded pl-1 pr-1 pr-sm-3" data-toggle-link>
-                <div class="image image--round icon text-h2 text-md-h0 mr-sm-4"><img src="img/test-1.jpg"
+                <div class="image image--round icon text-h2 text-md-h0 mr-sm-4"><img src="{{ asset('img/test-1.jpg') }}"
                         alt=""></div>
                 <span
                     class="lh-1 color-text text-body-2 text--demibold d-none d-sm-block">{{ Auth::user()->first_name }}</span>
                 <svg class="icon header-user__btn-arrow ml-4 color-text fade-80 text-small d-none d-sm-block">
-                    <use xlink:href="img/icons.svg#to-right" />
+                    <use xlink:href="{{ asset('img/icons.svg#to-right') }}" />
                 </svg>
             </button>
             <div class="header-user-tooltip" data-toggle-content>
@@ -60,11 +60,10 @@
     <section class="flex flex-align-start">
         <x-sidebar />
         <div class="content flex-grow p-10 card">
-            <div class="content-inner">
-                {{ $slot }}
-            </div>
+            {{ $slot }}
         </div>
     </section>
+    <livewire:project.access />
     <livewire:user.edit />
     <livewire:user.add />
     <livewire:user.activate />

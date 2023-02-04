@@ -52,7 +52,7 @@ class Add extends Component
         $validatedData['patronymic'] = $this->patronymic;
         $validatedData['role'] = $this->role;
         $validatedData['position'] = $this->position;
-        $validatedData['access'] = json_encode($this->access);
+        $validatedData['access'] = $this->access;
         $validatedData['password'] = '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi'; // password
 
         if ($this->photo) {

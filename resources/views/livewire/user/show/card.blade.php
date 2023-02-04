@@ -8,7 +8,9 @@
         </div>
         <div class="user-row-avatar">
             <div class="image image--box image--round mx-auto" style="width:32px">
-                <img src="{{ $user->photo }}" alt="" class="icon text-h5 mr-3">
+                @if ($user->photo)
+                    <img src="{{ asset($user->photo) }}" alt="" class="icon text-h5 mr-3">
+                @endif
             </div>
         </div>
         <div>
@@ -21,7 +23,7 @@
         </div>
         <button class="btn btn--primary btn--light btn-icon btn-small user-row-edit d-md-none ml-auto"><svg
                 class="icon">
-                <use xlink:href="img/icons.svg#edit" />
+                <use xlink:href="{{ asset('img/icons.svg#edit') }}" />
             </svg>
         </button>
     </div>
@@ -47,23 +49,21 @@
     <div>
         <div class="text-small fade-60 d-lg-none mb-1">Доступные проекты</div>
         <div class="avatar-list">
-            @if ($projects->count())
-                @foreach ($projects->slice(0, 3) as $project)
-                    <div class="image image--round image--box icon text-h1 avatar-item">
-                        <img src="img/{{ $project->image }}.jpg" alt="">
-                    </div>
-                @endforeach
-                @if ($projects->slice(3)->count())
-                    <div class="image image--round icon text-h1 avatar-item bg-primary">
-                        <div class="text-body-2 text--demibold color-white">+{{ $projects->slice(3)->count() }}</div>
-                    </div>
-                @endif
+            @foreach ($projects->slice(0, 3) as $project)
+                <div class="image image--round image--box icon text-h1 avatar-item">
+                    <img src="{{ asset('img/' . $project->image . '.jpg') }}" alt="">
+                </div>
+            @endforeach
+            @if ($projects->slice(3)->count())
+                <div class="image image--round icon text-h1 avatar-item bg-primary">
+                    <div class="text-body-2 text--demibold color-white">+{{ $projects->slice(3)->count() }}</div>
+                </div>
             @endif
         </div>
     </div>
     <button wire:click="edit" class="btn btn--primary btn--light btn-icon btn-small user-row-edit d-none d-md-flex">
         <svg class="icon">
-            <use xlink:href="img/icons.svg#edit" />
+            <use xlink:href="{{ asset('img/icons.svg#edit') }}" />
         </svg>
     </button>
 </div>

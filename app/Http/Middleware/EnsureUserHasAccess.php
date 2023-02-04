@@ -4,8 +4,9 @@ namespace App\Http\Middleware;
 
 use Closure;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
-class EnsureUserIsActive
+class EnsureUserHasAccess
 {
     /**
      * Handle an incoming request.
@@ -16,10 +17,10 @@ class EnsureUserIsActive
      */
     public function handle(Request $request, Closure $next)
     {
-        if ($request->user()->hasStatus()) {
-            return $next($request);
+        if ($request->user()->role === 'manager' && !$request->user()->hasAccess()) {
+            return redirect('/');
         }
 
-        return redirect('/');
+        return $next($request);
     }
 }

@@ -50,7 +50,7 @@ class Edit extends Component
         $this->tmp_photo = null;
         $this->role = $user['user']['role'];
         $this->position = $user['user']['position'];
-        $this->access = json_decode($user['user']['access']) ?? [];
+        $this->access = $user['user']['access'] ?? [];
     }
 
     public function update()
@@ -70,7 +70,7 @@ class Edit extends Component
         $validatedData['patronymic'] = $this->patronymic;
         $validatedData['role'] = $this->role;
         $validatedData['position'] = $this->position;
-        $validatedData['access'] = json_encode($this->access);
+        $validatedData['access'] = $this->access;
         if ($this->tmp_photo || !$this->photo) {
             $validatedData['photo'] = $this->tmp_photo?->store('img');
         }
@@ -87,6 +87,8 @@ class Edit extends Component
         $this->emit('userShowDelete', $this->user_id);
 
         session()->flash('message', 'Пользователь успешно удален');
+
+        $this->visible = false;
     }
 
     public function cancel()

@@ -21,7 +21,7 @@
                                 </select>
                                 <div class="form-input-end pe-none pr-3">
                                     <svg class="icon fade-80">
-                                        <use xlink:href="img/icons.svg#to-right" />
+                                        <use xlink:href="{{ asset('img/icons.svg#to-right') }}" />
                                     </svg>
                                 </div>
                             </div>
@@ -44,7 +44,7 @@
             <div class="dialog-close">
                 <button wire:click="cancel" class="btn btn--primary btn-large btn-icon">
                     <svg class="icon text-body-0 ">
-                        <use xlink:href="img/icons.svg#cross" />
+                        <use xlink:href="{{ asset('img/icons.svg#cross') }}" />
                     </svg>
                 </button>
             </div>

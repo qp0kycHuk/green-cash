@@ -13,14 +13,14 @@
                             <div class="image image--round icon text-h1 bg-l1 d-flex">
                                 <div class="form-avatar-field-edit">
                                     <svg class="icon">
-                                        <use xlink:href="img/icons.svg#edit" />
+                                        <use xlink:href="{{ asset('img/icons.svg#edit') }}" />
                                     </svg>
                                 </div>
                                 @if ($photo)
                                     <img src="{{ $photo->temporaryUrl() }}" alt="">
                                 @endif
                                 <svg class="icon text-h6 color-white m-auto form-avatar-field-placeholder">
-                                    <use xlink:href="img/icons.svg#user" />
+                                    <use xlink:href="{{ asset('img/icons.svg#user') }}" />
                                 </svg>
                             </div>
 
@@ -78,7 +78,7 @@
                                 </select>
                                 <div class="form-input-end pe-none pr-3">
                                     <svg class="icon fade-80">
-                                        <use xlink:href="img/icons.svg#to-right" />
+                                        <use xlink:href="{{ asset('img/icons.svg#to-right') }}" />
                                     </svg>
                                 </div>
                             </div>
@@ -103,11 +103,11 @@
                                             class="form-input-checkbox">
                                         <div class="form-checkbox-target">
                                             <svg class="icon">
-                                                <use xlink:href="./img/icons.svg#gal-ochka" />
+                                                <use xlink:href="{{ asset('img/icons.svg#gal-ochka') }}" />
                                             </svg>
                                         </div>
                                         <div class="image image--round image--box icon text-subtitle-2 ml-3">
-                                            <img src="img/{{ $project->image }}.jpg" alt="">
+                                            <img src="{{ asset('img/'.$project->image.'.jpg') }}" alt="">
                                         </div>
                                         <div class="text-body-2 ml-1">{{ $project->name }}</div>
                                     </label>
@@ -132,7 +132,7 @@
             <div class="dialog-close">
                 <button wire:click="cancel" class="btn btn--primary btn-large btn-icon">
                     <svg class="icon text-body-0 ">
-                        <use xlink:href="img/icons.svg#cross" />
+                        <use xlink:href="{{ asset('img/icons.svg#cross') }}" />
                     </svg>
                 </button>
             </div>

@@ -1,8 +1,9 @@
 <?php
 
-use App\Http\Controllers\ProfileController;
-use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\UserController;
+use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\ProjectController;
 
 /*
 |--------------------------------------------------------------------------
@@ -29,8 +30,12 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-Route::middleware(['auth', 'user.role:admin,supervisor', 'user.active'])->group(function () {
-    Route::get('/users', [UserController::class, 'index'])->name('users');
+Route::middleware(['auth', 'verified.phone', 'user.role:admin,supervisor', 'user.active'])->group(function () {
+    Route::get('dashboard/users', [UserController::class, 'index'])->name('users');
 });
+
+Route::resource('dashboard/projects', ProjectController::class)->scoped([
+    'project' => 'slug',
+])->middleware(['auth', 'verified.phone', 'user.role:admin,supervisor,manager', 'user.access', 'user.active']);
 
 require __DIR__.'/auth.php';
