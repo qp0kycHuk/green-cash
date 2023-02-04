@@ -3,9 +3,11 @@
 namespace App\Console\Commands;
 
 use App\Models\Project;
+use Exception;
 use Illuminate\Support\Arr;
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\Http;
+use InvalidArgumentException;
 
 class YandexMetrikaCommand extends Command
 {
@@ -70,6 +72,12 @@ class YandexMetrikaCommand extends Command
         return $this->info("\nDone!");
     }
 
+    /**
+     * Update project
+     *
+     * @param int $counterId
+     * @return mixed
+     */
     protected function updateProject($counterId)
     {
         $http = $this->http($counterId);
