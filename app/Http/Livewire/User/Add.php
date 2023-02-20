@@ -49,6 +49,7 @@ class Add extends Component
     public function create()
     {
         $validatedData = $this->validate();
+
         $validatedData['patronymic'] = $this->patronymic;
         $validatedData['role'] = $this->role;
         $validatedData['position'] = $this->position;

@@ -121,7 +121,7 @@ class User extends Authenticatable implements IMustVerifyPhone
      */
     public function hasAccess()
     {
-        return collect(json_decode($this->access))->first(function ($value, $key) {
+        return collect($this->access)->first(function ($value, $key) {
             return $value === request()->segment(3);
         });
     }

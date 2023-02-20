@@ -8,7 +8,9 @@
                 <div class="text-small text-md-body-2 fade-60">{{ $project->description }}</div>
             </div>
         </div>
-        <livewire:project.users :project="$project" />
+        @if (!auth()->user()->hasRole(['manager']))
+            <livewire:project.users :project="$project" />
+        @endif
         <div class="ml-auto">
             <button class="btn btn--primary btn--white-bg btn-icon btn-md-large">
                 <svg class="icon text-h6 color-text fade-60">
@@ -18,5 +20,5 @@
         </div>
     </div>
 
-    <livewire:project.show :project="$project" :amount="$amount" />
+    <livewire:project.show :project="$project" :balance="$balance" />
 </x-app-layout>

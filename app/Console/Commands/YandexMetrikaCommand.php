@@ -3,11 +3,9 @@
 namespace App\Console\Commands;
 
 use App\Models\Project;
-use Exception;
 use Illuminate\Support\Arr;
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\Http;
-use InvalidArgumentException;
 
 class YandexMetrikaCommand extends Command
 {
@@ -87,16 +85,23 @@ class YandexMetrikaCommand extends Command
             'visits_new' => $http['data'][0]['metrics'][1][0],
         ];
 
-        $yandex = Project::where('counter_id', $counterId)->first()->yandex();
-        $importedToday =  $yandex->whereDate('created_at', today());
+        $yandex = Project::yandexByCounterId($counterId);
+        $yandexToday =  Project::yandexByCounterId($counterId)->whereDate('created_at', today());
 
-        return $importedToday->count() ? $importedToday->update($data) : $yandex->create($data);
+        $sales = Project::saleByCounterId($counterId);
+
+        if ($yandexToday->count()) {
+            $yandexToday->update($data);
+        } else {
+            $yandex->create($data);
+            $sales->create();
+        }
     }
 
     /**
      * Http request
      *
-     * @return Illuminate\Support\Facades\Http;
+     * @return Illuminate\Support\Facades\Http
      */
     protected function http($counterId)
     {
@@ -117,7 +122,7 @@ class YandexMetrikaCommand extends Command
     }
 
     /**
-     * Find project by slug or return all projects
+     * Find a project by slug or return all projects
      *
      * @return array
      */

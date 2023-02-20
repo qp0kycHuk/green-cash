@@ -47,9 +47,9 @@ class ProjectController extends Controller
      */
     public function show(Project $project)
     {
-        $amount = BalanceService::get($project->direct_key);
+        $balance = BalanceService::get($project->direct_key);
 
-        return view('project.show', compact('project', 'amount'));
+        return view('project.index', compact('project', 'balance'));
     }
 
     /**

@@ -22,11 +22,13 @@ class Yandex extends Model
      * @var array
      */
     protected $fillable = [
-        'consumption',
+        'balance',
+        'money_in',
+        'spending',
         'visits_total',
         'visits_new',
         'sales_quanity',
-        'sales_amount',
+        'sales_sum',
         'sales_check',
         'ROMI',
         'CPS',

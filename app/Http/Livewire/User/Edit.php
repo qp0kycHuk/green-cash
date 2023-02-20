@@ -71,6 +71,7 @@ class Edit extends Component
         $validatedData['role'] = $this->role;
         $validatedData['position'] = $this->position;
         $validatedData['access'] = $this->access;
+
         if ($this->tmp_photo || !$this->photo) {
             $validatedData['photo'] = $this->tmp_photo?->store('img');
         }

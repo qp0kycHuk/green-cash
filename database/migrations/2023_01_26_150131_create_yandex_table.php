@@ -15,15 +15,14 @@ return new class extends Migration
     {
         Schema::create('yandex', function (Blueprint $table) {
             $table->id();
-            $table->integer('consumption')->nullable();
+            $table->integer('balance')->nullable();
+            $table->integer('money_in')->nullable();
+            $table->integer('spending')->nullable();
             $table->integer('visits_total')->nullable();
             $table->integer('visits_new')->nullable();
             $table->integer('sales_quanity')->nullable();
-            $table->integer('sales_amount')->nullable();
+            $table->integer('sales_sum')->nullable();
             $table->integer('sales_check')->nullable();
-            $table->integer('ROMI')->nullable();
-            $table->integer('CPS')->nullable();
-            $table->integer('CRS')->nullable();
             $table->timestamps();
         });
     }

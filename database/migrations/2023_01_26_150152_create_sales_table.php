@@ -15,17 +15,19 @@ return new class extends Migration
     {
         Schema::create('sales', function (Blueprint $table) {
             $table->id();
-            $table->dateTime('date');
-            $table->integer('payment_100_quanity');
-            $table->integer('payment_100_amount');
-            $table->integer('payment_50_quanity');
-            $table->integer('payment_50_amount');
-            $table->integer('preorder_quanity');
-            $table->integer('preorder_amount');
-            $table->integer('total_sales');
-            $table->integer('received');
-            $table->integer('pending');
-            $table->integer('check');
+            $table->integer('payment_100_quanity')->nullable();
+            $table->integer('payment_100_sum')->nullable();
+            $table->integer('payment_50_quanity')->nullable();
+            $table->integer('payment_50_sum')->nullable();
+            $table->integer('preorder_quanity')->nullable();
+            $table->integer('preorder_sum')->nullable();
+            $table->integer('total_sales')->nullable();
+            $table->integer('received')->nullable();
+            $table->integer('pending')->nullable();
+            $table->integer('check')->nullable();
+            $table->enum('preorder_for', ['2023', '2024', '2025', '2026', '2027']);
+            $table->integer('preorder_for_quanity')->nullable();
+            $table->integer('preorder_for_sum')->nullable();
             $table->timestamps();
         });
     }

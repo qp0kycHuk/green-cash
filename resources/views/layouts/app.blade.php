@@ -67,6 +67,7 @@
     <livewire:user.edit />
     <livewire:user.add />
     <livewire:user.activate />
+    <livewire:project.show.sales.edit />
     @livewireScripts
 </body>
 
