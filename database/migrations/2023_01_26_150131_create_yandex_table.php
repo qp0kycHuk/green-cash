@@ -23,6 +23,9 @@ return new class extends Migration
             $table->integer('sales_quanity')->nullable();
             $table->integer('sales_sum')->nullable();
             $table->integer('sales_check')->nullable();
+            $table->integer('ROMI')->nullable();
+            $table->integer('CPS')->nullable();
+            $table->string('CRS')->nullable();
             $table->timestamps();
         });
     }
