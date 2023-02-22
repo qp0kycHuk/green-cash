@@ -33,9 +33,11 @@ const init = (root = document.body, options = {}) => {
       }
     })
 
-    // window.addEventListener('datepicker-reset', event => {
-    //     newPicker.clear()
-    // })
+    window.addEventListener('datepicker-reset', event => {
+      newPicker.clear({
+        silent: true
+      })
+    })
   });
 
   const covers = Array.from(root.querySelectorAll('[data-datepicker-cover]'))
@@ -51,7 +53,7 @@ const init = (root = document.body, options = {}) => {
       onSelect({ date }) {
         if (date) {
           const minDate = date
-          minDate.setDate(minDate.getDate() + 2)
+          minDate.setDate(minDate.getDate() + 1)
           dpMax.update({ minDate })
         } else {
           dpMax.update({ minDate: minEnd })
@@ -68,7 +70,7 @@ const init = (root = document.body, options = {}) => {
       onSelect({ date }) {
         if (date) {
           const maxDate = date
-          maxDate.setDate(maxDate.getDate() - 2)
+          maxDate.setDate(maxDate.getDate() - 1)
           dpMin.update({ maxDate })
         } else {
           dpMin.update({ maxDate: false })
