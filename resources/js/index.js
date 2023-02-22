@@ -34,6 +34,21 @@ function loadHandler() {
 	ripple.attach('.waved')
 	ripple.deAttach('.btn--link')
 
+
+	tooltipInit()
+	Livewire.hook('element.updated', (el, component) => {
+		if(el.classList.contains('content-inner')){
+			setTimeout(tooltipInit, 250)
+		}
+	})
+
+	window.addEventListener('toggleopen', toggleopenHaandler)
+	window.addEventListener('toggleclose', togglecloseHaandler)
+}
+
+function tooltipInit() {
+	console.log('tooltipInit');
+
 	const tippyHtmlOpts = {
 		allowHTML: true,
 		theme: 'gray',
@@ -43,6 +58,7 @@ function loadHandler() {
 		plugins: [animateFill],
 		arrow: true,
 	}
+
 
 	tippy('#tooltip-crs', {
 		content: `
@@ -64,9 +80,6 @@ function loadHandler() {
 		<div class="text-small mb-2">Коэффициент конверсии. <br> Соотношение посетителей сайта, <br> совершивших покупку к общей аудитории</div>`,
 		...tippyHtmlOpts
 	});
-
-	window.addEventListener('toggleopen', toggleopenHaandler)
-	window.addEventListener('toggleclose', togglecloseHaandler)
 }
 
 function toggleopenHaandler(event) {
