@@ -25,11 +25,17 @@ const init = (root = document.body, options = {}) => {
 
 
   pickers.forEach(picker => {
-    new AirDatepicker(picker, {
+    let newPicker = new AirDatepicker(picker, {
       ...pickerOptions,
       position: picker.getAttribute('data-position') || 'bottom center',
+      onSelect(e) {
+        Livewire.emit('specificDate', e.formattedDate)
+      }
     })
 
+    // window.addEventListener('datepicker-reset', event => {
+    //     newPicker.clear()
+    // })
   });
 
   const covers = Array.from(root.querySelectorAll('[data-datepicker-cover]'))
