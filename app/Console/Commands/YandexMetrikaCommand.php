@@ -92,6 +92,7 @@ class YandexMetrikaCommand extends Command
 
         if ($yandexToday->count()) {
             $yandexToday->update($data);
+            //$sales->create();
         } else {
             $yandex->create($data);
             $sales->create();

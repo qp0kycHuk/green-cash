@@ -15,7 +15,7 @@ class Access extends Component
 
     public function render()
     {
-        $this->users = User::get();
+        $this->users = User::get()->except(auth()->id());
 
         return view('livewire.project.access');
     }

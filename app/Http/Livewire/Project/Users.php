@@ -15,6 +15,7 @@ class Users extends Component
     public function render()
     {
         $this->users = User::where('access', 'like', '%' . $this->project->slug . '%')->get();
+
         return view('livewire.project.users');
     }
 

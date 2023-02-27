@@ -10,6 +10,15 @@ class Project extends Model
     use HasFactory;
 
     /**
+     * The attributes that are mass assignable.
+     *
+     * @var array
+     */
+    protected $fillable = [
+        'balance'
+    ];
+
+    /**
      * Get the yandex rows associated with the project.
      *
      * @return BelongsToMany

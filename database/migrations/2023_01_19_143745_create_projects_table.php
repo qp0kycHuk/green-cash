@@ -21,6 +21,7 @@ return new class extends Migration
             $table->string('image');
             $table->integer('counter_id')->nullable();
             $table->string('direct_key')->nullable();
+            $table->string('balance')->nullable();
             $table->timestamps();
         });
     }

@@ -25,18 +25,9 @@ const init = (root = document.body, options = {}) => {
 
 
   pickers.forEach(picker => {
-    let newPicker = new AirDatepicker(picker, {
+    new AirDatepicker(picker, {
       ...pickerOptions,
       position: picker.getAttribute('data-position') || 'bottom center',
-      onSelect(e) {
-        Livewire.emit('specificDate', e.formattedDate)
-      }
-    })
-
-    window.addEventListener('datepicker-reset', event => {
-      newPicker.clear({
-        silent: true
-      })
     })
   });
 
@@ -50,32 +41,37 @@ const init = (root = document.body, options = {}) => {
     dpMin = new AirDatepicker(minEl, {
       ...pickerOptions,
       position: minEl.getAttribute('data-position') || 'bottom center',
-      onSelect({ date }) {
-        if (date) {
-          const minDate = date
+      onSelect(e) {
+        Livewire.emit('specificDateMin', e.formattedDate)
+        if (e.date) {
+          const minDate = e.date
           minDate.setDate(minDate.getDate() + 1)
           dpMax.update({ minDate })
         } else {
           dpMax.update({ minDate: minEnd })
-
         }
-
       }
     })
-
+    
     dpMax = new AirDatepicker(maxEl, {
       ...pickerOptions,
       position: maxEl.getAttribute('data-position') || 'bottom center',
       minDate: minEnd,
-      onSelect({ date }) {
-        if (date) {
-          const maxDate = date
+      onSelect(e) {
+        Livewire.emit('specificDateMax', e.formattedDate)
+        if (e.date) {
+          const maxDate = e.date
           maxDate.setDate(maxDate.getDate() - 1)
           dpMin.update({ maxDate })
         } else {
           dpMin.update({ maxDate: false })
         }
       }
+    })
+
+    window.addEventListener('datepicker-reset', e => {
+      dpMin.clear({silent: true}),
+      dpMax.clear({silent: true})
     })
   })
 

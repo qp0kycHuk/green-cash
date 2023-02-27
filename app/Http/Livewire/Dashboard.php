@@ -9,9 +9,10 @@ class Dashboard extends Component
 {
     public $projects;
     public $filter = 'yesterday';
-    public $specificDate;
+    public $specificDateMin;
+    public $specificDateMax;
 
-    protected $listeners = ['specificDate'];
+    protected $listeners = ['specificDateMin', 'specificDateMax'];
 
     public function mount()
     {
@@ -34,6 +35,9 @@ class Dashboard extends Component
         $this->projects = Project
             ::withSum(['yandex' => fn ($query) => $this->specificWhere($query)], 'spending')
             ->withSum(['yandex' => fn ($query) => $this->specificWhere($query)], 'visits_total')
+            ->withSum(['yandex' => fn ($query) => $this->specificWhere($query)], 'sales_sum')
+            ->withSum(['sales' => fn ($query) => $this->specificWhere($query)], 'received')
+            ->withSum(['sales' => fn ($query) => $this->specificWhere($query)], 'pending')
             ->withSum(['sales' => fn ($query) => $this->specificWhere($query)], 'total_sales')
             ->with(['yandex' => fn ($query) => $this->specificWhere($query)])
             ->get();
@@ -59,16 +63,23 @@ class Dashboard extends Component
                     ->whereDate('created_at', '<=', now()->endOfYear());
             case 'specific':
                 return $query
-                    ->whereDate('created_at', now()->create($this->specificDate));
+                    ->whereDate('created_at', '>=', now()->create($this->specificDateMin))
+                    ->whereDate('created_at', '<=', now()->create($this->specificDateMax));
             default:
                 $this->dispatchBrowserEvent('datepicker-reset');
                 return $query->whereDay('created_at', today());
         }
     }
 
-    public function specificDate($date)
+    public function specificDateMin($date)
     {
-        $this->specificDate = $date;
+        $this->specificDateMin = $date;
+        $this->filter('specific');
+    }
+
+    public function specificDateMax($date)
+    {
+        $this->specificDateMax = $date;
         $this->filter('specific');
     }
 }

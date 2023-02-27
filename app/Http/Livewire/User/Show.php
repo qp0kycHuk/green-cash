@@ -17,7 +17,7 @@ class Show extends Component
 
     public function render()
     {
-        $users = User::orderBy('id', 'desc')->get();
+        $users = User::orderBy('id', 'desc')->get()->except(auth()->id());
         return view('livewire.user.show', compact('users'));
     }
 
