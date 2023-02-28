@@ -27,7 +27,7 @@
         <div class="d-none d-lg-block">
             <div class="project-row mb-3">
                 <div class="text-small fade-60">Проект</div>
-                <div class="text-small fade-60">Баланс</div>
+                <!-- <div class="text-small fade-60">Баланс</div> -->
                 <div class="text-small fade-60 text--center">Расход Яндекс Директ</div>
                 <div class="text-small fade-60 text--center">Посетители на сайте</div>
                 <div class="text-small fade-60 text--center">Количество продаж</div>
@@ -43,14 +43,19 @@
                     <img src="{{ asset('img/'.$project->image.'.jpg') }}" alt="" class="icon text-h5 mr-3">
                     <div class="text-body-2 text--demibold">{{ $project->name }}</div>
                 </div>
-                <div class="project-item__cost project-item__cost--green">
+                <div class="project-item__cost project-item__cost--green d-md-none">
                     {{ price($project->balance) }} @ccy
+                    <div class="text-small color-text fade-40">
+                        Обновлено: 13:00
+                    </div>
                 </div>
                 <div class="text-body-2 text--demibold text-lg--center">
                     <div class="text-small fade-60 d-lg-none">Расход Яндекс Директ</div>{{ price($project->yandex_sum_spending )}} @ccy
                 </div>
                 <div class="text-body-2 text--demibold text-lg--center">
-                    <div class="text-small fade-60 d-lg-none">Посетители на сайте</div>{{ $project->yandex_sum_visits_total }}
+                    <div class="text-small fade-60 d-lg-none">Посетители на сайте</div>
+                    <!-- <div class=\"fade-40\">Еще рано)</div> -->
+                    {{ $project->yandex_sum_visits_total ? $project->yandex_sum_visits_total : "Еще рано)" }}
                 </div>
                 <div class="text-body-2 text--demibold text-lg--center">
                     <div class="text-small fade-60 d-lg-none">Количество продаж</div>{{ $project->sales_sum_total_sales }}

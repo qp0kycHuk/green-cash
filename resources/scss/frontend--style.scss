@@ -604,6 +604,7 @@ body {
 	&-row {
 		display: grid;
 		grid-template-columns: 188px 112px 192px 182px 178px 178px 178px 182px;
+		grid-template-columns: 188px 190px 180px 178px 128px 128px 190px;
 		padding-left: 16px;
 		padding-right: 16px;
 		width: max-content;
@@ -655,6 +656,13 @@ body {
 
 			@media (max-width:$lg) and (min-width:$sm) {
 				grid-row: span 2;
+			}
+
+			@media (max-width:$md) {
+				padding: 0;
+				width: auto;
+				text-align: left;
+				background: none !important;
 			}
 
 			&--green {
@@ -851,6 +859,37 @@ body {
 				color: #fff;
 			}
 
+		}
+	}
+}
+
+.svodka-left-column {
+	min-width: 112px;
+	width: 112px;
+
+	@media (max-width:$md) {
+		display: none;
+	}
+
+	&-sign {
+		height: 94px;
+
+		@media (max-width:$lg) {
+			height: 66px;
+		}
+	}
+
+	&-cost {
+		height: 50px;
+		display: flex;
+		align-items: center;
+
+		@media (max-width:$lg) {
+			height: 96px;
+		}
+
+		&+& {
+			margin-top: 4px;
 		}
 	}
 }
