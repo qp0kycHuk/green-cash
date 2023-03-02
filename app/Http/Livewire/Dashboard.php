@@ -14,20 +14,15 @@ class Dashboard extends Component
 
     protected $listeners = ['specificDateMin', 'specificDateMax'];
 
-    public function mount()
-    {
-        $this->projects();
-    }
-
     public function render()
     {
+        $this->projects();
         return view('livewire.dashboard');
     }
 
     public function filter($type)
     {
         $this->filter = $type;
-        $this->projects();
     }
 
     public function projects()
